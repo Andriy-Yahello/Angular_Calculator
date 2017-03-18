@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html ng-app="CalculatorApp">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>ng-calculator</title>
+	<meta charset="utf-8" />
+
+    <link href="Libraries/bootstrap-theme.css" rel="stylesheet"/>
+    <link href="../Libraries/bootstrap.css"rel="stylesheet"/>
+    <script src="/Libraries/angular.js"></script>
+
+    <script>
+        var app = angular.module("CalculatorApp", []);
+
+        app.controller("CalculatorCtrl", function ($scope) {
+            $scope.numbers = [{ num: 0 },
+                { num: 0 },
+                { num: 0 }];
+
+            $scope.Add = function () {
+                
+                $scope.numbers[2].num = Number($scope.numbers[0].num) + Number($scope.numbers[1].num);
+            }
+            $scope.Substract = function () {
+                $scope.numbers[2].num = $scope.numbers[0].num - $scope.numbers[1].num;
+            }
+            $scope.Multiply = function () {
+                $scope.numbers[2].num = $scope.numbers[0].num * $scope.numbers[1].num;
+            }
+
+            $scope.Divide = function () {
+                $scope.numbers[2].num = $scope.numbers[0].num / $scope.numbers[1].num;
+            }
+
+            });
+    </script>
+
+</head>
+<body>
+    <div ng-controller="CalculatorCtrl">
+
+        <div>
+            <input ng-model="numbers[0].num"/>
+            <input ng-model="numbers[1].num" />
+            <input ng-model="numbers[2].num" />
+        </div>
+
+        <div>
+            <button class="btn btn-default" ng-click="Add()">+</button>
+            <button class="btn btn-default" ng-click="Substract()">-</button>
+            <button class="btn btn-default" ng-click="Multiply()">*</button>
+            <button class="btn btn-default" ng-click="Divide()">/</button>
+        </div>
+
+    </div>
+</body>
+</html>
